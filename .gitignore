@@ -127,4 +127,8 @@ dmypy.json
 .idea/
 
 # Django
-media/
+!media/
+media/*
+!media/thumbnail/
+media/thumbnail/*
+!media/thumbnail/default-book.jpg

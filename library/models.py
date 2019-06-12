@@ -48,8 +48,7 @@ class Book(models.Model):
     forms = models.ManyToManyField(Form, verbose_name='формы')
 
     file = models.FileField('файл книги', upload_to='book/%Y/%m/%d/')
-    # TODO: Add default thumbnail
-    thumbnail = models.ImageField('обложка', upload_to='thumbnail/%Y/%m/%d/')
+    thumbnail = models.ImageField('обложка', upload_to='thumbnail/%Y/%m/%d/', default='thumbnail/default-book.jpg')
 
     def __str__(self):
         return self.name
