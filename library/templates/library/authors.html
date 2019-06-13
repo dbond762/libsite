@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="list">
-    {% for book in books %}
+    {% for author in authors %}
         <div class="list__item">
-            {% include 'library/card/book.html' with item=book thumbnail_url=book.thumbnail.url %}
+            {% include 'library/card/author.html' with item=author thumbnail_url=author.photo.url %}
         </div>
     {% endfor %}
 </div>

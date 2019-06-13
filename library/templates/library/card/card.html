@@ -1,0 +1,15 @@
+<article class="card {% block article_class %}{% endblock %}">
+    <div class="card__header">
+        {% block header %}{% endblock %}
+    </div>
+    <div class="card__content">
+        <div class="card__thumbnail">
+            <a class="link" href="#">
+                <img src="{{ thumbnail_url }}" alt="thumbnail" class="card__img">
+            </a>
+        </div>
+        <div class="card__other">
+            <p class="card__description">{{ item.description | truncatewords:20 }}</p>
+        </div>
+    </div>
+</article>

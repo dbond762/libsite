@@ -1,0 +1,21 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<article class="card book">
+    <div class="card__header">
+        <h2 class="book__name"><a class="link" href="#">{{ book.name }}</a></h2>
+        <h3 class="book__authors">{{ book.get_authors }}</h3>
+    </div>
+    <div class="card__content">
+        <div class="card__thumbnail">
+            <a class="link" href="#">
+                <img src="{{ book.thumbnail.url }}" alt="thumbnail" class="card__img">
+            </a>
+        </div>
+        <div class="card__other">
+            <p class="card__description">{{ book.description }}</p>
+            <a class="book__file btn" href="{{ book.file.url }}">Скачать книгу</a>
+        </div>
+    </div>
+</article>
+{% endblock %}

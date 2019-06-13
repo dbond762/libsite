@@ -3,8 +3,8 @@ from django.db import models
 
 class Author(models.Model):
     name = models.CharField('имя', max_length=100)
-    slug = models.SlugField(max_length=100, unique=True)
-    photo = models.ImageField('фото', upload_to='author/%Y/%m/%d/')
+    description = models.TextField('описание', blank=True)
+    photo = models.ImageField('фото', upload_to='author/%Y/%m/%d/', default='author/default-photo.jpg')
 
     def __str__(self):
         return self.name
@@ -38,7 +38,6 @@ class Form(models.Model):
 
 class Book(models.Model):
     name = models.CharField('название', max_length=100)
-    slug = models.SlugField(max_length=100, unique=True)
     description = models.TextField('описание', blank=True)
 
     pub_date = models.DateField('дата публикации', auto_now_add=True)

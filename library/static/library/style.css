@@ -1,0 +1,88 @@
+/* general */
+@font-face {
+  font-family: "Share Tech Mono";
+  src: local("Share Tech Mono"), local("ShareTechMono-Regular"), url("https://fonts.gstatic.com/s/sharetechmono/v8/J7aHnp1uDWRBEqV98dVQztYldFcLowEF.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+body {
+    font: 16px Roboto, sens-serif;
+}
+
+/* reset */
+body, p {
+    margin: 0;
+}
+
+/* header */
+.header {
+    display: flex;
+    align-items: center;
+    box-shadow: 1px 1px 5px 0px rgba(155, 141, 155, 1);
+}
+.logo {
+    width: 200px;
+}
+.menu {
+    display: flex;
+}
+.menu__item {
+    margin: 0 10px;
+    list-style: none;
+}
+
+/* container */
+.container {
+    width: auto;
+    margin: auto;
+}
+@media (min-width: 576px) {
+    .container {
+        width: 540px;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        width: 720px;
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        width: 960px;
+    }
+}
+@media (min-width: 1200px) {
+    .container {
+        width: 1140px;
+    }
+}
+
+/* list */
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.list__item {
+    width: 50%;
+}
+
+/* card */
+.card {
+    box-sizing: border-box;
+    padding: 20px;
+}
+.card__content {
+    display: flex;
+}
+.card__thumbnail {
+    margin: 10px;
+}
+.card__img {
+    width: 200px;
+}
+.card__other {
+    margin: 10px;
+}

@@ -1,0 +1,9 @@
+{% extends 'library/card/card.html' %}
+
+{% block article_class %}author{% endblock %}
+
+{% block header %}
+    <h2 class="author__name">
+        <a class="link" href="{% url 'library:book_detail' item.id %}">{{ item.name }}</a>
+    </h2>
+{% endblock %}
