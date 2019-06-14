@@ -15,6 +15,9 @@ body {
 body, p {
     margin: 0;
 }
+a {
+    outline: none;
+}
 
 /* header */
 .header {

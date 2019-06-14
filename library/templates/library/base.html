@@ -13,7 +13,9 @@
 <body>
 
     <header class="header">
-        <img src="{% static 'library/logo_transparent.png' %}" alt="logo" class="logo">
+        <a href="{% url 'library:home' %}">
+            <img src="{% static 'library/logo_transparent.png' %}" alt="logo" class="logo">
+        </a>
         <ul class="menu">
             <li class="menu__item"><a href="{% url 'library:home' %}">Главная</a></li>
             <li class="menu__item"><a href="{% url 'library:authors' %}">Авторы</a></li>
