@@ -36,6 +36,12 @@ def authors(request):
     return render(request, 'library/authors.html', {'authors': author_list})
 
 
+def author_books(request, pk):
+    author = get_object_or_404(Author, pk=pk)
+    books = Book.objects.filter(authors__pk=pk)
+    return render(request, 'library/author_books.html', {'author': author, 'books': books})
+
+
 def genres(request):
     books = Book.objects.all()
     return render(request, 'library/genres.html', {'books': books})

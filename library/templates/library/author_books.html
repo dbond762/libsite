@@ -1,0 +1,12 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<h2>{{ author.name }}</h2>
+<div class="list">
+    {% for book in books %}
+        <div class="list__item">
+            {% include 'library/card/book.html' with item=book thumbnail_url=book.thumbnail.url %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
