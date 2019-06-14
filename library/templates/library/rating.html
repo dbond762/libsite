@@ -1,0 +1,38 @@
+<!--[if lte IE 7]><style>#reviewStars-input{display:none}</style><![endif]-->
+
+<span>Рейтинг: {{ book.get_rating | floatformat:'1' }}</span>
+<form action="{% url 'library:vote' book.id %}" method="post">
+    {% csrf_token %}
+
+    <!--
+    <div class="rating">
+        <span class="icon-star rating__out">
+            <span class="icon-star rating__in" style="width: 100%;"></span>
+        </span>
+        <span class="icon-star rating__out">
+            <span class="icon-star rating__in" style="width: 100%;"></span>
+        </span>
+        <span class="icon-star rating__out">
+            <span class="icon-star rating__in" style="width: 100%;"></span>
+        </span>
+        <span class="icon-star rating__out">
+            <span class="icon-star rating__in" style="width: 100%;"></span>
+        </span>
+        <span class="icon-star rating__out">
+            <span class="icon-star rating__in" style="width: 33.33%;"></span>
+        </span>
+    </div>
+    -->
+
+    <select name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+    </select>
+
+    <input type="hidden" name="url" value="{{ request.path }}">
+
+    <input type="submit" value="Оценить" class="rating-submit">
+</form>

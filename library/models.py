@@ -42,6 +42,9 @@ class Book(models.Model):
 
     pub_date = models.DateField('дата публикации', auto_now_add=True)
 
+    vote_sum = models.IntegerField(default=0)
+    vote_count = models.IntegerField(default=0)
+
     authors = models.ManyToManyField(Author, verbose_name='авторы')
     genres = models.ManyToManyField(Genre, verbose_name='жанры')
     forms = models.ManyToManyField(Form, verbose_name='формы')
@@ -63,6 +66,14 @@ class Book(models.Model):
     def get_forms(self):
         return ', '.join([form.name for form in self.forms.all()])
     get_forms.short_description = 'формы'
+
+    def get_rating(self):
+        return (self.vote_sum / self.vote_count) if self.vote_count != 0 else 0
+    get_rating.short_description = 'рейтинг'
+
+    def vote(self, rating):
+        self.vote_count += 1
+        self.vote_sum += rating
 
     class Meta:
         verbose_name = 'книга'

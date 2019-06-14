@@ -1,4 +1,6 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 
 from library.models import Author, Book
 
@@ -11,6 +13,22 @@ def home(request):
 def book_detail(request, pk):
     book = get_object_or_404(Book, pk=pk)
     return render(request, 'library/book_detail.html', {'book': book})
+
+
+def vote(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    url = request.POST.get('url', reverse('library:home'))
+
+    try:
+        rating = int(request.POST['rating'])
+        if rating < 1 or rating > 5:
+            raise IndexError
+    except (KeyError, TypeError, IndexError):
+        return HttpResponseRedirect(url)
+
+    book.vote(rating)
+    book.save()
+    return HttpResponseRedirect(url)
 
 
 def authors(request):

@@ -10,6 +10,7 @@
         </div>
         <div class="card__other">
             <p class="card__description">{{ item.description | truncatewords:20 }}</p>
+            {% block other %}{% endblock %}
         </div>
     </div>
 </article>

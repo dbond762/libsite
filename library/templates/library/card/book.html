@@ -6,3 +6,7 @@
     <h2 class="book__name"><a class="link" href="{% url 'library:book_detail' item.id %}">{{ item.name }}</a></h2>
     <h3 class="book__authors">{{ item.get_authors }}</h3>
 {% endblock %}
+
+{% block other %}
+    {% include 'library/rating.html' %}
+{% endblock %}

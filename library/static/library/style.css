@@ -86,3 +86,38 @@ body, p {
 .card__other {
     margin: 10px;
 }
+
+/* rating */
+@font-face {
+    font-family: "icomoon";
+    src: url("/static/library/icomoon.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+}
+.icon-star {
+    font-family: "icomoon" !important;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-star:before {
+    content: "\e900";
+}
+.rating__out {
+    color: #808080;
+    position: relative;
+    z-index: 1;
+    margin-right: 5px;
+}
+.rating__in {
+    color: #ffa500;
+    position: absolute;
+    z-index: 2;
+    font-size: inherit;
+    display: block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    width: 0;
+}

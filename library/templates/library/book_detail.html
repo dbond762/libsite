@@ -14,6 +14,7 @@
         </div>
         <div class="card__other">
             <p class="card__description">{{ book.description }}</p>
+            {% include 'library/rating.html' %}
             <a class="book__file btn" href="{{ book.file.url }}">Скачать книгу</a>
         </div>
     </div>
