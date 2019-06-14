@@ -132,3 +132,6 @@ media/*
 !media/thumbnail/
 media/thumbnail/*
 !media/thumbnail/default-book.jpg
+!media/author/
+media/author/*
+!media/author/default-photo.jpg
