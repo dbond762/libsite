@@ -1,19 +1,6 @@
 {% extends 'library/base.html' %}
 
 {% block content %}
-<div class="category-list">
-    {% for form in forms %}
-        <div class="category-list__wrap">
-            <span class="category-list__item">{{ form.name }}</span>
-        </div>
-    {% endfor %}
-</div>
-
-<div class="list">
-    {% for book in books %}
-        <div class="list__item">
-            {% include 'library/card/book.html' with item=book thumb=book.thumbnail %}
-        </div>
-    {% endfor %}
-</div>
+    {% include 'library/category_list.html' with categories=forms %}
+    {% include 'library/list/book.html' with list=books %}
 {% endblock %}

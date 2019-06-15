@@ -1,4 +1,4 @@
-{% extends 'library/card/card.html' %}
+{% extends 'library/list/list.html' %}
 
 {% block article_class %}author{% endblock %}
 
@@ -6,4 +6,10 @@
     <h2 class="author__name">
         <a class="link" href="{% url 'library:author_books' item.id %}">{{ item.name }}</a>
     </h2>
+{% endblock %}
+
+{% block card_thumbnail %}
+    {% with thumb=item.photo %}
+        {{ block.super }}
+    {% endwith %}
 {% endblock %}

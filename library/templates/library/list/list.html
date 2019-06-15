@@ -1,0 +1,28 @@
+{% load thumbnail %}
+
+<div class="list">
+    {% for item in list %}
+        <div class="list__item">
+            <article class="card {% block article_class %}{% endblock %}">
+                <div class="card__header">
+                    {% block header %}{% endblock %}
+                </div>
+                <div class="card__content">
+                    <div class="card__thumbnail">
+                        <a class="link" href="#">
+                            {% block card_thumbnail %}
+                                {% thumbnail thumb '130x190' crop='center' as img %}
+                                    <img src="{{ img.url }}" alt="thumbnail" class="card__img">
+                                {% endthumbnail %}
+                            {% endblock %}
+                        </a>
+                    </div>
+                    <div class="card__other">
+                        <p class="card__description">{{ item.description | truncatewords:20 }}</p>
+                        {% block other %}{% endblock %}
+                    </div>
+                </div>
+            </article>
+        </div>
+    {% endfor %}
+</div>

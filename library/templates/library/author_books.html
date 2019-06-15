@@ -1,12 +1,6 @@
 {% extends 'library/base.html' %}
 
 {% block content %}
-<h2>{{ author.name }}</h2>
-<div class="list">
-    {% for book in books %}
-        <div class="list__item">
-            {% include 'library/card/book.html' with item=book thumb=book.thumbnail %}
-        </div>
-    {% endfor %}
-</div>
+    <h2>{{ author.name }}</h2>
+    {% include 'library/list/book.html' with list=books %}
 {% endblock %}

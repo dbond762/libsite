@@ -1,11 +1,5 @@
 {% extends 'library/base.html' %}
 
 {% block content %}
-<div class="list">
-    {% for book in books %}
-        <div class="list__item">
-            {% include 'library/card/book.html' with item=book thumb=book.thumbnail %}
-        </div>
-    {% endfor %}
-</div>
+    {% include 'library/list/book.html' with list=books %}
 {% endblock %}
