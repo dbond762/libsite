@@ -84,7 +84,7 @@ a {
     margin: 10px;
 }
 .card__img {
-    width: 200px;
+    width: 130px;
 }
 .card__other {
     margin: 10px;
@@ -123,4 +123,23 @@ a {
     bottom: 0;
     overflow: hidden;
     width: 0;
+}
+
+/* category-list */
+.category-list {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.category-list__wrap {
+    width: 33%;
+}
+.category-list__item {
+    padding: 10px;
+    display: inline-block;
+    width: 200px;
+}
+.category-list__item:hover {
+    background: #d0b8d0;
+    cursor: pointer;
 }

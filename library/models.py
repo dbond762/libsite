@@ -1,10 +1,11 @@
 from django.db import models
+from sorl.thumbnail import ImageField
 
 
 class Author(models.Model):
     name = models.CharField('имя', max_length=100)
     description = models.TextField('описание', blank=True)
-    photo = models.ImageField('фото', upload_to='author/%Y/%m/%d/', default='author/default-photo.jpg')
+    photo = ImageField('фото', upload_to='author/%Y/%m/%d/', default='author/default-photo.jpg')
 
     def __str__(self):
         return self.name
@@ -44,36 +45,40 @@ class Book(models.Model):
 
     vote_sum = models.IntegerField(default=0)
     vote_count = models.IntegerField(default=0)
+    rating = models.DecimalField('рейтинг', max_digits=3, decimal_places=2, default=0.0)
 
     authors = models.ManyToManyField(Author, verbose_name='авторы')
     genres = models.ManyToManyField(Genre, verbose_name='жанры')
     forms = models.ManyToManyField(Form, verbose_name='формы')
 
     file = models.FileField('файл книги', upload_to='book/%Y/%m/%d/')
-    thumbnail = models.ImageField('обложка', upload_to='thumbnail/%Y/%m/%d/', default='thumbnail/default-book.jpg')
+    thumbnail = ImageField('обложка', upload_to='thumbnail/%Y/%m/%d/', default='thumbnail/default-book.jpg')
 
     def __str__(self):
         return self.name
 
     def get_authors(self):
         return ', '.join([author.name for author in self.authors.all()])
+
     get_authors.short_description = 'авторы'
 
     def get_genres(self):
         return ', '.join([genre.name for genre in self.genres.all()])
+
     get_genres.short_description = 'жанры'
 
     def get_forms(self):
         return ', '.join([form.name for form in self.forms.all()])
-    get_forms.short_description = 'формы'
 
-    def get_rating(self):
-        return (self.vote_sum / self.vote_count) if self.vote_count != 0 else 0
-    get_rating.short_description = 'рейтинг'
+    get_forms.short_description = 'формы'
 
     def vote(self, rating):
         self.vote_count += 1
         self.vote_sum += rating
+
+    def save(self, *args, **kwargs):
+        self.rating = (self.vote_sum / self.vote_count) if self.vote_count != 0 else 0.0
+        super(Book, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'книга'

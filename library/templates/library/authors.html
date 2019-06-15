@@ -4,7 +4,7 @@
 <div class="list">
     {% for author in authors %}
         <div class="list__item">
-            {% include 'library/card/author.html' with item=author thumbnail_url=author.photo.url %}
+            {% include 'library/card/author.html' with item=author thumb=author.photo %}
         </div>
     {% endfor %}
 </div>

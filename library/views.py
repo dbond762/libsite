@@ -2,11 +2,11 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
-from library.models import Author, Book
+from library.models import Author, Book, Form, Genre
 
 
 def home(request):
-    books = Book.objects.all()
+    books = Book.objects.order_by('-rating', '-pub_date')
     return render(request, 'library/home.html', {'books': books})
 
 
@@ -43,10 +43,12 @@ def author_books(request, pk):
 
 
 def genres(request):
+    genre_list = Genre.objects.all()
     books = Book.objects.all()
-    return render(request, 'library/genres.html', {'books': books})
+    return render(request, 'library/genres.html', {'genres': genre_list, 'books': books})
 
 
 def forms(request):
+    form_list = Form.objects.all()
     books = Book.objects.all()
-    return render(request, 'library/forms.html', {'books': books})
+    return render(request, 'library/forms.html', {'forms': form_list, 'books': books})

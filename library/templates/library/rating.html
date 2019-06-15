@@ -1,6 +1,6 @@
 <!--[if lte IE 7]><style>#reviewStars-input{display:none}</style><![endif]-->
 
-<span>Рейтинг: {{ book.get_rating | floatformat:'1' }}</span>
+<span>Рейтинг: {{ book.rating | floatformat:'1' }}</span>
 <form action="{% url 'library:vote' book.id %}" method="post">
     {% csrf_token %}
 

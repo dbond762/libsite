@@ -1,9 +1,19 @@
 {% extends 'library/base.html' %}
 
 {% block content %}
-<ul>
-    {% for book in books %}
-        <li>{{ book.name }}</li>
+<div class="category-list">
+    {% for form in forms %}
+        <div class="category-list__wrap">
+            <span class="category-list__item">{{ form.name }}</span>
+        </div>
     {% endfor %}
-</ul>
+</div>
+
+<div class="list">
+    {% for book in books %}
+        <div class="list__item">
+            {% include 'library/card/book.html' with item=book thumb=book.thumbnail %}
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

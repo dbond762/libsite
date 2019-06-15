@@ -1,3 +1,5 @@
+{% load thumbnail %}
+
 <article class="card {% block article_class %}{% endblock %}">
     <div class="card__header">
         {% block header %}{% endblock %}
@@ -5,7 +7,9 @@
     <div class="card__content">
         <div class="card__thumbnail">
             <a class="link" href="#">
-                <img src="{{ thumbnail_url }}" alt="thumbnail" class="card__img">
+                {% thumbnail thumb '130x190' crop='center' as img %}
+                    <img src="{{ img.url }}" alt="thumbnail" class="card__img">
+                {% endthumbnail %}
             </a>
         </div>
         <div class="card__other">
