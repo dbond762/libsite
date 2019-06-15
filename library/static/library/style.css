@@ -200,6 +200,9 @@ a:hover {
 .list__item {
     width: 50%;
 }
+.list__empty {
+    font-size: 1.4rem;
+}
 @media (max-width: 767px) {
     .list__item {
         width: 100%;

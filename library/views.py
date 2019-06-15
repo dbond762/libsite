@@ -44,11 +44,23 @@ def author_books(request, pk):
 
 def genres(request):
     genre_list = Genre.objects.all()
-    books = Book.objects.all()
+
+    try:
+        active_genre = int(request.GET['active-genre'])
+        books = Book.objects.filter(genres__id=active_genre)
+    except (KeyError, TypeError):
+        books = Book.objects.all()
+
     return render(request, 'library/genres.html', {'genres': genre_list, 'books': books})
 
 
 def forms(request):
     form_list = Form.objects.all()
-    books = Book.objects.all()
+
+    try:
+        active_form = int(request.GET['active-form'])
+        books = Book.objects.filter(forms__id=active_form)
+    except (KeyError, TypeError):
+        books = Book.objects.all()
+
     return render(request, 'library/forms.html', {'forms': form_list, 'books': books})

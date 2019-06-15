@@ -2,5 +2,9 @@
 
 {% block content %}
     {% include 'library/category_list.html' with categories=forms %}
+    <form class="category-list__form" action="{% url 'library:forms' %}" method="get">
+        <input class="category-list__active-item" type="hidden" name="active-form">
+    </form>
+
     {% include 'library/list/book.html' with list=books %}
 {% endblock %}

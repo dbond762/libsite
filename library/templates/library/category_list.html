@@ -1,7 +1,9 @@
 <div class="category-list">
     {% for item in categories %}
         <div class="category-list__wrap">
-            <span class="category-list__item">{{ item.name }}</span>
+            <span class="category-list__item {% if item.id == active_item %}category-list__item--active{% endif %}" data-id="{{ item.id }}">
+                {{ item.name }}
+            </span>
         </div>
     {% endfor %}
 </div>
