@@ -1,22 +1,98 @@
-/* general */
-@font-face {
-  font-family: "Share Tech Mono";
-  src: local("Share Tech Mono"), local("ShareTechMono-Regular"), url("https://fonts.gstatic.com/s/sharetechmono/v8/J7aHnp1uDWRBEqV98dVQztYldFcLowEF.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 400;
-}
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-
-body {
-    font: 16px Roboto, sens-serif;
-}
-
 /* reset */
-body, p {
-    margin: 0;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 a {
     outline: none;
+}
+
+/* general */
+@font-face {
+    font-family: Roboto;
+    src: url('/static/library/Roboto-Regular.ttf');
+    width: normal;
+}
+
+html {
+    font: 16px/1.3 Roboto, sans-serif;
+    hyphens: auto;
+}
+@media (max-width: 991px) {
+    html {
+        font-size: 15px;
+    }
+}
+a {
+    text-decoration: none;
+    color: #907890;
+}
+a:hover {
+    color: #503850;
+}
+
+/* icomoon font */
+@font-face {
+    font-family: 'icomoon';
+    src: url('/static/library/icomoon.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+[class^="icon-"], [class*=" icon-"] {
+    font-family: "icomoon" !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-bars:before {
+    content: "\e900";
+}
+.icon-download:before {
+    content: "\e901";
+}
+.icon-star:before {
+    content: "\e902";
 }
 
 /* header */
@@ -25,15 +101,68 @@ a {
     align-items: center;
     box-shadow: 1px 1px 5px 0px rgba(155, 141, 155, 1);
 }
+.header__top {
+    display: flex;
+    justify-content: space-between;
+}
+.header__bars {
+    padding: 37px 30px;
+    font-size: 26px;
+    display: none;
+    color: #907890;
+}
+.header__bars:hover {
+    background: #e0c8e0;
+    cursor: pointer;
+    color: #604860;
+}
+.header__menu {
+    display: flex;
+}
+@media (max-width: 575px) {
+    .header {
+        flex-direction: column;
+    }
+    .header__top {
+        width: 100%;
+    }
+    .header__bars {
+        display: inline-block;
+    }
+    .header__menu {
+        flex-direction: column;
+    }
+    .header__menu--collapsed {
+        display: none;
+    }
+}
 .logo {
     width: 200px;
 }
 .menu {
-    display: flex;
+    width: 100%;
+    font-size: 1.1rem;
 }
 .menu__item {
-    margin: 0 10px;
     list-style: none;
+}
+.menu__link {
+    display: inline-block;
+    padding: 41px 10px;
+}
+.menu__link:hover {
+    background: #e0c8e0;
+}
+@media (max-width: 991px) {
+    .menu__link {
+        padding: 42px 10px
+    }
+}
+@media (max-width: 575px) {
+    .menu__link {
+        width: 100%;
+        padding: 30px 25px;
+    }
 }
 
 /* container */
@@ -66,10 +195,15 @@ a {
 .list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    margin: 10px 0 50px;
 }
 .list__item {
     width: 50%;
+}
+@media (max-width: 767px) {
+    .list__item {
+        width: 100%;
+    }
 }
 
 /* card */
@@ -77,42 +211,57 @@ a {
     box-sizing: border-box;
     padding: 20px;
 }
+.card__header {
+    font-size: 1.4rem;
+    line-height: 1.5;
+}
 .card__content {
     display: flex;
 }
 .card__thumbnail {
-    margin: 10px;
+    margin: 10px 10px 10px 0;
 }
 .card__img {
     width: 130px;
+    display: block;
 }
 .card__other {
     margin: 10px;
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.book__authors {
+    font-size: 1.2rem;
+}
+.book__file {
+    background: #e0c8e0;
+    padding: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    box-shadow: 1px 1px 5px 0px rgba(155, 141, 155, 1);
+}
+@media (max-width: 420px) {
+    .card__content {
+        flex-direction: column;
+    }
+    .card__img {
+        margin: auto;
+    }
+    .card__other {
+        min-height: 0;
+    }
 }
 
 /* rating */
-@font-face {
-    font-family: "icomoon";
-    src: url("/static/library/icomoon.woff") format("woff");
-    font-style: normal;
-    font-weight: normal;
-}
-.icon-star {
-    font-family: "icomoon" !important;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-.icon-star:before {
-    content: "\e900";
-}
-.rating__out {
+.stars__out {
     color: #808080;
     position: relative;
     z-index: 1;
     margin-right: 5px;
 }
-.rating__in {
+.stars__in {
     color: #ffa500;
     position: absolute;
     z-index: 2;
@@ -133,6 +282,7 @@ a {
 }
 .category-list__wrap {
     width: 33%;
+    display: flex;
 }
 .category-list__item {
     padding: 10px;
@@ -140,6 +290,33 @@ a {
     width: 200px;
 }
 .category-list__item:hover {
-    background: #d0b8d0;
+    background: #e0c8e0;
     cursor: pointer;
+    color: #503850;
+}
+@media (max-width: 767px) {
+    .category-list__wrap {
+        width: 50%;
+    }
+}
+@media (max-width: 575px) {
+    .category-list__item {
+        margin: auto;
+    }
+}
+@media (max-width: 420px) {
+    .category-list__wrap {
+        width: 100%;
+        margin: 0 30px
+    }
+    .category-list__item {
+        width: 100%;
+    }
+}
+
+/* footer */
+.footer {
+    box-shadow: 1px 1px 5px 0px rgba(155, 141, 155, 1);
+    font-size: 1.1rem;
+    padding: 40px;
 }

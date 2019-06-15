@@ -13,14 +13,25 @@
 <body>
 
     <header class="header">
-        <a href="{% url 'library:home' %}">
-            <img src="{% static 'library/logo_transparent.png' %}" alt="logo" class="logo">
-        </a>
-        <ul class="menu">
-            <li class="menu__item"><a href="{% url 'library:home' %}">Главная</a></li>
-            <li class="menu__item"><a href="{% url 'library:authors' %}">Авторы</a></li>
-            <li class="menu__item"><a href="{% url 'library:genres' %}">Жанры</a></li>
-            <li class="menu__item"><a href="{% url 'library:forms' %}">Формы</a></li>
+        <div class="header__top">
+            <a href="{% url 'library:home' %}">
+                <img src="{% static 'library/logo_transparent.png' %}" alt="logo" class="logo">
+            </a>
+            <span class="icon-bars header__bars"></span>
+        </div>
+        <ul class="menu header__menu header__menu--collapsed">
+            <li class="menu__item">
+                <a class="menu__link" href="{% url 'library:home' %}">Главная</a>
+            </li>
+            <li class="menu__item">
+                <a class="menu__link" href="{% url 'library:authors' %}">Авторы</a>
+            </li>
+            <li class="menu__item">
+                <a class="menu__link" href="{% url 'library:genres' %}">Жанры</a>
+            </li>
+            <li class="menu__item">
+                <a class="menu__link" href="{% url 'library:forms' %}">Формы</a>
+            </li>
         </ul>
     </header>
 
@@ -28,9 +39,11 @@
         {% block content %}{% endblock %}
     </div>
 
-    <footer>
-        This is FOOTER!
+    <footer class="footer">
+        © 2019 <a href="{% url 'library:home' %}">«Libsite»</a>
     </footer>
+
+    <script src="{% static 'library/main.js' %}"></script>
 
 </body>
 </html>

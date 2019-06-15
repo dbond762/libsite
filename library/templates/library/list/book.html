@@ -3,7 +3,7 @@
 {% block article_class %}book{% endblock %}
 
 {% block header %}
-    <h2 class="book__name"><a class="link" href="{% url 'library:book_detail' item.id %}">{{ item.name }}</a></h2>
+    <h2 class="book__name"><a href="{% url 'library:book_detail' item.id %}">{{ item.name }}</a></h2>
     <h3 class="book__authors">{{ item.get_authors }}</h3>
 {% endblock %}
 
@@ -14,5 +14,6 @@
 {% endblock %}
 
 {% block other %}
+    <p class="card__description">{{ item.description | truncatewords:20 }}</p>
     {% include 'library/rating.html' with book=item %}
 {% endblock %}

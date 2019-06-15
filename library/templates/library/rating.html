@@ -1,36 +1,38 @@
-<span>Рейтинг: {{ book.rating | floatformat:'1' }}</span>
-<form action="{% url 'library:vote' book.id %}" method="post">
-    {% csrf_token %}
+<div class="rating">
+    <span>Рейтинг: {{ book.rating | floatformat:'1' }}</span>
+    <form action="{% url 'library:vote' book.id %}" method="post">
+        {% csrf_token %}
 
-    <!--
-    <div class="rating">
-        <span class="icon-star rating__out">
-            <span class="icon-star rating__in" style="width: 100%;"></span>
-        </span>
-        <span class="icon-star rating__out">
-            <span class="icon-star rating__in" style="width: 100%;"></span>
-        </span>
-        <span class="icon-star rating__out">
-            <span class="icon-star rating__in" style="width: 100%;"></span>
-        </span>
-        <span class="icon-star rating__out">
-            <span class="icon-star rating__in" style="width: 100%;"></span>
-        </span>
-        <span class="icon-star rating__out">
-            <span class="icon-star rating__in" style="width: 33.33%;"></span>
-        </span>
-    </div>
-    -->
+        <!--
+        <div class="stars">
+            <span class="icon-star stars__out">
+                <span class="icon-star rating__in" style="width: 100%;"></span>
+            </span>
+            <span class="icon-star stars__out">
+                <span class="icon-star rating__in" style="width: 100%;"></span>
+            </span>
+            <span class="icon-star stars__out">
+                <span class="icon-star rating__in" style="width: 100%;"></span>
+            </span>
+            <span class="icon-star stars__out">
+                <span class="icon-star rating__in" style="width: 100%;"></span>
+            </span>
+            <span class="icon-star stars__out">
+                <span class="icon-star rating__in" style="width: 33.33%;"></span>
+            </span>
+        </div>
+        -->
 
-    <select name="rating">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5" selected>5</option>
-    </select>
+        <select name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5" selected>5</option>
+        </select>
 
-    <input type="hidden" name="url" value="{{ request.path }}">
+        <input type="hidden" name="url" value="{{ request.path }}">
 
-    <input type="submit" value="Оценить" class="rating-submit">
-</form>
+        <input type="submit" value="Оценить" class="rating-submit">
+    </form>
+</div>

@@ -1,21 +1,29 @@
 {% extends 'library/base.html' %}
 
+{% load thumbnail %}
+
 {% block content %}
     <article class="card book">
         <div class="card__header">
-            <h2 class="book__name"><a class="link" href="#">{{ book.name }}</a></h2>
+            <h2 class="book__name"><a href="#">{{ book.name }}</a></h2>
             <h3 class="book__authors">{{ book.get_authors }}</h3>
         </div>
         <div class="card__content">
             <div class="card__thumbnail">
                 <a class="link" href="#">
-                    <img src="{{ book.thumbnail.url }}" alt="thumbnail" class="card__img">
+                    {% thumbnail book.thumbnail '130x190' crop='center' as img %}
+                        <img src="{{ img.url }}" alt="thumbnail" class="card__img">
+                    {% endthumbnail %}
                 </a>
             </div>
             <div class="card__other">
                 <p class="card__description">{{ book.description }}</p>
                 {% include 'library/rating.html' %}
-                <a class="book__file btn" href="{{ book.file.url }}">Скачать книгу</a>
+                <div class="book__file-wrap">
+                    <a class="book__file" href="{{ book.file.url }}">
+                        <span class="icon-download"></span> Скачать книгу
+                    </a>
+                </div>
             </div>
         </div>
     </article>
