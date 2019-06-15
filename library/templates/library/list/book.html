@@ -4,7 +4,11 @@
 
 {% block header %}
     <h2 class="book__name"><a href="{% url 'library:book_detail' item.id %}">{{ item.name }}</a></h2>
-    <h3 class="book__authors">{{ item.get_authors }}</h3>
+    <h3 class="book__authors">
+        {% for author in item.authors.all %}
+            <a href="{% url 'library:author_books' author.id %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </h3>
 {% endblock %}
 
 {% block card_thumbnail %}
