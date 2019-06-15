@@ -9,7 +9,7 @@
                 </div>
                 <div class="card__content">
                     <div class="card__thumbnail">
-                        <a class="link" href="#">
+                        <a class="link" href="{% block link %}{% endblock %}">
                             {% block card_thumbnail %}
                                 {% thumbnail thumb '130x190' crop='center' as img %}
                                     <img src="{{ img.url }}" alt="thumbnail" class="card__img">

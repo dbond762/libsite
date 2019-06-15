@@ -1,6 +1,7 @@
 {% extends 'library/list/list.html' %}
 
 {% block article_class %}author{% endblock %}
+{% block link %}{% url 'library:author_books' item.id %}{% endblock %}
 
 {% block header %}
     <h2 class="author__name">

@@ -1,6 +1,22 @@
 {% extends 'library/base.html' %}
 
+{% load thumbnail %}
+
 {% block content %}
-    <h2>{{ author.name }}</h2>
+    <article class="card author">
+        <div class="card__header">
+            <h2 class="author__name">{{ author.name }}</h2>
+        </div>
+        <div class="card__content">
+            <div class="card__thumbnail">
+                {% thumbnail author.photo '130x190' crop='center' as img %}
+                    <img src="{{ img.url }}" alt="thumbnail" class="card__img">
+                {% endthumbnail %}
+            </div>
+            <div class="card__other">
+                <p class="card__description">{{ author.description }}</p>
+            </div>
+        </div>
+    </article>
     {% include 'library/list/book.html' with list=books %}
 {% endblock %}

@@ -5,16 +5,18 @@
 {% block content %}
     <article class="card book">
         <div class="card__header">
-            <h2 class="book__name"><a href="#">{{ book.name }}</a></h2>
-            <h3 class="book__authors">{{ book.get_authors }}</h3>
+            <h2 class="book__name">{{ book.name }}</h2>
+            <h3 class="book__authors">
+                {% for author in item.authors.all %}
+                    <a href="{% url 'library:author_books' author.id %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </h3>
         </div>
         <div class="card__content">
             <div class="card__thumbnail">
-                <a class="link" href="#">
-                    {% thumbnail book.thumbnail '130x190' crop='center' as img %}
-                        <img src="{{ img.url }}" alt="thumbnail" class="card__img">
-                    {% endthumbnail %}
-                </a>
+                {% thumbnail book.thumbnail '130x190' crop='center' as img %}
+                    <img src="{{ img.url }}" alt="thumbnail" class="card__img">
+                {% endthumbnail %}
             </div>
             <div class="card__other">
                 <p class="card__description">{{ book.description }}</p>
